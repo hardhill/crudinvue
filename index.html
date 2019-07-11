@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD in VueJS</title>
+    <script src="axios-master/dist/axios.min.js"></script>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <h3>{{title}}</h3>
+    <label for="txtNew">Input your record</label>
+    <input id="txtNew" type="text" v-model="txtvalue">
+    <button @click="AddtoList">ADD</button>
+    <ul>
+        <li v-for="onerec in records">{{onerec.value}}</li>
+    </ul>
+</div>
+<script>
+    const axios = require('axios');
+    var allrecords = [
+        {id: 1, value: "First record"},
+        {id: 2, value: "Second record"},
+        {id: 3, value: "Other record"},
+        {id: 4, value: "Record too"},
+    ];
+    var myapp = new Vue({
+        el: "#app",
+        data: {
+            title: "List my records",
+            records: allrecords,
+            txtvalue: ""
+        },
+        methods: {
+            AddtoList: function () {
+                axios({
+                    method:'post',
+                    url:'',
+
+                })
+                    .then()
+                    .catch();
+                allrecords.push({id: 2, value: myapp.txtvalue});
+                myapp.txtvalue = "";
+            }
+        }
+    });
+</script>
+</body>
+</html>
